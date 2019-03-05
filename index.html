@@ -79,16 +79,16 @@
 
     <button id="b2" class="myButton1">From Private Key to WIF:</button>
     <p>2.1 Private key(hex): PK0 = <span id="privateKeyHexId0" class="keys"></span></p>
-    <p>2.2 Add 0x80 byte to the front of PK0: PK1 = <span id="privateKeyHexId1" class="keys"></span></p>
+    <p>2.2 Add "80" to the front of PK0: PK1 = <span id="privateKeyHexId1" class="keys"></span></p>
     <p>2.3 SHA-256(PK1): PK2 = <span id="privateKeyHexId2" class="keys"></span></p>
     <p>2.4 SHA-256(PK2): PK3 = <span id="privateKeyHexId3" class="keys"></span></p>
     <p>2.5 Checksum(First 4 bytes/8 characters of PK3): <span id="privateKeyHexId4" class="keys"></span></p>
     <p>2.6 PK1 + Checksum: PK4 = <span id="privateKeyHexId5" class="keys"></span></p>
-    <p>2.7 Base58 encoding of PK4: PK5 = <span id="privateKeyHexId6" class="keys"></span></p>
+    <p>2.7 Base58 encoding of PK4: WIF = <span id="privateKeyHexId6" class="keys"></span></p>
 
     <button id="b3" class="myButton1">From Public Key to Address:</button>
     <p>3.1 Public key(hex): UK0 = <span id="publicKeyHexId0" class="keys"></span></p>
-    <p>3.2 Add 04 to the front of UK0(two parts together): UK1 = <span id="publicKeyHexId1" class="keys"></span></p>
+    <p>3.2 Add "04" to the front of UK0(two parts together): UK1 = <span id="publicKeyHexId1" class="keys"></span></p>
     <p>3.3 SHA-256(UK1): UK2 = <span id="publicKeyHexId2" class="keys"></span></p>
     <p>3.4 RIPEMD-160(UK2): UK3 = <span id="publicKeyHexId3" class="keys"></span></p>
     <p>3.5 Adding network bytes(00) to the front of UK3: UK4 = <span id="publicKeyHexId4" class="keys"></span></p>
@@ -96,7 +96,7 @@
     <p>3.7 SHA-256(UK5): UK6 = <span id="publicKeyHexId6" class="keys"></span></p>
     <p>3.8 Checksum(First 4 bytes/8 characters of UK6): <span id="publicKeyHexId7" class="keys"></span></p>
     <p>3.9 UK4 + Checksum: UK7 = <span id="publicKeyHexId8" class="keys"></span></p>
-    <p>3.10 Base58 encoding of UK7: UK8 = <span id="publicKeyHexId9" class="keys"></span></p>
+    <p>3.10 Base58 encoding of UK7: Address = <span id="publicKeyHexId9" class="keys"></span></p>
 
 
     <p><strong>Note:</strong> This is just a demo!</p>
