@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="test.css">
+  </head>
+  <body>
+    <p>Choose your private key:</p>
+    <form name="bitcoinPrivateKeyForm1">
+        <input type="range" name="privateKeyInput1" id="privateKeyInputId1"
+          value="5974818946285"
+          min="0" max="11580000000000"
+          oninput="privateKeyOutputId1.value = bigInt(privateKeyInputId1.value)"
+          onchange="document.getElementById('privateKey1').innerHTML = privateKeyInputId1.value"
+          class="slider">
+        <output name="privateKeyOutput1" id="privateKeyOutputId1">
+          5974818946285
+        </output>
+    </form>
+    <form name="bitcoinPrivateKeyForm2">
+        <input type="range" name="privateKeyInput2" id="privateKeyInputId2"
+          value="0"
+          min="0" max="9999999999999999"
+          oninput="privateKeyOutputId2.value = bigInt(privateKeyInputId2.value)"
+          onchange="document.getElementById('privateKey2').innerHTML = privateKeyInputId2.value.toString().padStart(16, '0')"
+          class="slider">
+        <output name="privateKeyOutput2" id="privateKeyOutputId2">
+          0
+        </output>
+    </form>
+    <form name="bitcoinPrivateKeyForm3">
+        <input type="range" name="privateKeyInput3" id="privateKeyInputId3"
+          value="0"
+          min="0" max="9999999999999999"
+          oninput="privateKeyOutputId3.value = bigInt(privateKeyInputId3.value)"
+          onchange="document.getElementById('privateKey3').innerHTML = privateKeyInputId3.value.toString().padStart(16, '0')"
+          class="slider">
+        <output name="privateKeyOutput3" id="privateKeyOutputId3">
+          0
+        </output>
+    </form>
+    <form name="bitcoinPrivateKeyForm4">
+        <input type="range" name="privateKeyInput4" id="privateKeyInputId4"
+          value="0"
+          min="0" max="9999999999999999"
+          oninput="privateKeyOutputId4.value = bigInt(privateKeyInputId4.value)"
+          onchange="document.getElementById('privateKey4').innerHTML = privateKeyInputId4.value.toString().padStart(16, '0')"
+          class="slider">
+        <output name="privateKeyOutput4" id="privateKeyOutputId4">
+          0
+        </output>
+    </form>
+    <form name="bitcoinPrivateKeyForm5">
+        <input type="range" name="privateKeyInput5" id="privateKeyInputId5"
+          value="0"
+          min="0" max="9999999999999999"
+          oninput="privateKeyOutputId5.value = bigInt(privateKeyInputId5.value)"
+          onchange="document.getElementById('privateKey5').innerHTML = privateKeyInputId5.value.toString().padStart(16, '0')"
+          class="slider">
+        <output name="privateKeyOutput5" id="privateKeyOutputId5">
+          0
+        </output>
+    </form>
+    <button id="b1" class="myButton">Get your private key & public key</button>
+    <p>
+      <span id = "privateKey1">5974818946285</span>
+      <span id = "privateKey2">0000000000000000</span>
+      <span id = "privateKey3">0000000000000000</span>
+      <span id = "privateKey4">0000000000000000</span>
+      <span id = "privateKey5">0000000000000000</span>
+    </p>
+
+    <p>Private key: <span id="privateKeyId" class="keys"></span></p>
+    <p>Public key: <span id="publicKeyId" class="keys"></span></p>
+    <p>Private key(hex): <span id="privateKeyHexId" class="keys"></span></p>
+    <p>Public key(hex): <span id="publicKeyHexId" class="keys"></span></p>
+    <p><span id="errorMessage"></span></p>
+
+    <button id="b2" class="myButton1">From Private Key to WIF:</button>
+    <p>Private key(hex): PK0 = <span id="privateKeyHexId0" class="keys"></span></p>
+    <p>Add 0x80 byte to the front of PK0: PK1 = <span id="privateKeyHexId1" class="keys"></span></p>
+    <p>SHA-256(PK1): PK2 = <span id="privateKeyHexId2" class="keys"></span></p>
+    <p>SHA-256(PK2): PK3 = <span id="privateKeyHexId3" class="keys"></span></p>
+    <p>Checksum(First 4 bytes/8 characters of PK3): <span id="privateKeyHexId4" class="keys"></span></p>
+    <p>PK1 + Checksum: PK4 = <span id="privateKeyHexId5" class="keys"></span></p>
+    <p>Base58 encoding of PK4: PK5 = <span id="privateKeyHexId6" class="keys"></span></p>
+
+    <button id="b3" class="myButton1">From Public Key to Address:</button>
+    <p>Public key(hex): UK0 = <span id="publicKeyHexId0" class="keys"></span></p>
+    <p>Add 04 to the front of UK0(two parts together): UK1 = <span id="publicKeyHexId1" class="keys"></span></p>
+    <p>SHA-256(UK1): UK2 = <span id="publicKeyHexId2" class="keys"></span></p>
+    <p>RIPEMD-160(UK2): UK3 = <span id="publicKeyHexId3" class="keys"></span></p>
+    <p>Adding network bytes(00) to the front of UK3: UK4 = <span id="publicKeyHexId4" class="keys"></span></p>
+    <p>SHA-256(UK4): UK5 = <span id="publicKeyHexId5" class="keys"></span></p>
+    <p>SHA-256(UK5): UK6 = <span id="publicKeyHexId6" class="keys"></span></p>
+    <p>Checksum(First 4 bytes/8 characters of UK6): <span id="publicKeyHexId7" class="keys"></span></p>
+    <p>UK4 + Checksum: UK7 = <span id="publicKeyHexId8" class="keys"></span></p>
+    <p>Base58 encoding of UK7: UK8 = <span id="publicKeyHexId9" class="keys"></span></p>
+
+
+    <p><strong>Note:</strong> This is just a demo!</p>
+    Base on <a href="https://peterolson.github.io/BigInteger.js/">BigInteger.js</a> and <a href="https://github.com/bitwiseshiftleft/sjcl/">sjcl.js</a>
+    <script src="test.js" type="text/javascript"></script>
+    <script src="BigInteger.min.js" type="text/javascript"></script>
+    <script src="sjcl.js" type="text/javascript"></script>
+  </body>
+</html>
